@@ -23,7 +23,7 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
+      to: {type: 'user'},
     }),
     defineField({
       name: 'mainImage',
@@ -49,17 +49,49 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'likes',
+      title: 'Likes',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'user'}}],
+      validation: (Rule) => Rule.unique(),
+    }),
+    defineField( {
+      title: 'Comments',
+      name: 'comments',
+      type: 'array',
+      of: [
+        {
+          title: 'Comment',
+          name: 'comment',
+          type: 'document',
+          fields: [
+            {
+              title: 'Author',
+              name: 'author',
+              type: 'reference',
+              to: [{type: 'user'}],
+            },
+            {
+              title: 'Comment',
+              name: 'comment',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    },)
   ],
 
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
-  },
+  // preview: {
+  //   select: {
+  //     title: 'title',
+  //     author: 'author.name',
+  //     media: 'mainImage',
+  //   },
+  //   prepare(selection) {
+  //     const {author} = selection
+  //     return {...selection, subtitle: author && `by ${author}`}
+  //   },
+  // },
 })
