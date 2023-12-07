@@ -55,12 +55,22 @@ export default defineType({
     }),
     defineField({
       name: 'one_time_ingredient',
-      title: 'one-time ingredient',
+      title: 'One-time ingredient',
       type: 'number',
     }),
     defineField({
-      name: 'protein',
-      title: 'Protein',
+      name: 'recommended_target',
+      title: 'Recommended_target',
+      type: 'string',
+    }),
+    defineField({
+      name: 'seller',
+      title: 'Seller',
+      type: 'string',
+    }),
+    defineField({
+      name: 'seller_link',
+      title: 'Seller Link',
       type: 'string',
     }),
   ],
@@ -70,13 +80,4 @@ export default defineType({
       media: 'image',
     },
   },
-  // picture
-  // name
-  // brand
-  // taste
-  // nation
-  // capacity
-  // price
-  // ingredient
-  // protein
 })
