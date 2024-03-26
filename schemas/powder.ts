@@ -59,6 +59,11 @@ export default defineType({
       type: 'number',
     }),
     defineField({
+      name: 'protein',
+      title: 'Protein',
+      type: 'string',
+    }),
+    defineField({
       name: 'recommended_target',
       title: 'Recommended_target',
       type: 'string',
